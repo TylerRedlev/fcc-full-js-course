@@ -18,7 +18,7 @@ function hiGreet() {
 hiGreet();
 
 //-----------------------------
-
+//test
 let myPoints = 3;
 
 function add3Points() {
