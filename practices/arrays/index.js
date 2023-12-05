@@ -8,3 +8,13 @@ function getTotalTime() {
 
 let totalTime = getTotalTime();
 console.log(totalTime);
+
+function getRandomNumber() {
+  return Math.random();
+}
+
+let randomNumber = getRandomNumber();
+let flooredNumber = Math.floor(randomNumber * 6);
+
+console.log(randomNumber * 6);
+console.log(flooredNumber);
