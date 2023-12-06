@@ -62,13 +62,16 @@ function renderGame() {
 }
 
 function newCard() {
-  //1. Create a card variable, and hard code its value to a number (2-11)
-  let card = getRandomNumber();
-  console.log(card + "added");
-  //Add the new card to the sum variable
-  sum += card;
-  cards.push(card);
-  console.log(cards);
-  //Call start game function
-  renderGame();
+  //Give new card only if isAlive and not blackjack
+  if (isAlive === true && hasBlackJack === false) {
+    //1. Create a card variable, and hard code its value to a number (2-11)
+    let card = getRandomNumber();
+    console.log(card + "added");
+    //Add the new card to the sum variable
+    sum += card;
+    cards.push(card);
+    console.log(cards);
+    //Call start game function
+    renderGame();
+  }
 }
