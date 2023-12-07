@@ -1,20 +1,28 @@
-let player1Time = 102;
-let player2Time = 107;
+let castle = {
+  isCastle: true,
+  propertyName: "Castle",
+  price: 190,
+};
 
-//Write a function that returns the total race time
-function getTotalTime() {
-  return player1Time + player2Time;
+console.log(castle.isCastle);
+console.log(castle.propertyName);
+
+let person = {
+  name: "Durukan Kizilarslan",
+  age: 30,
+  country: "Turkey",
+};
+
+function logData() {
+  return (
+    person.name +
+    " is " +
+    person.age +
+    " years old and lives in " +
+    person.country
+  );
 }
 
-let totalTime = getTotalTime();
-console.log(totalTime);
-
-function getRandomNumber() {
-  return Math.random();
-}
-
-let randomNumber = getRandomNumber();
-let flooredNumber = Math.floor(randomNumber * 6);
-
-console.log(randomNumber * 6);
-console.log(flooredNumber);
+logData();
+let result = logData();
+console.log(result);
