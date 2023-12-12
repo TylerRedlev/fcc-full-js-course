@@ -1,33 +1,47 @@
 function saveLead() {
   console.log("Lead saved!");
 }
+
+//Declaring const and variables
 let leads = [];
+
+//Declaring page elements
 const btnSave = document.getElementById("btn-input");
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("list-el");
 
-let myLeads = `["asdfasdfadsfa"]`;
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("leads"));
+// localStorage.clear();
+// let leadsFromLocalStorage = JSON.parse(localStorage.getItem("leads"));
+// console.log(leadsFromLocalStorage);
+
+if (leadsFromLocalStorage) {
+  leads = leadsFromLocalStorage;
+  renderLeads();
+}
+//let leads = `["asdfasdfadsfa"]`;
 
 //Turn leads string into an array
 //Push a new value to the array
 //Turn the array into a string again
 //Console log the string using typeofto verify that it's a string
-let parsedLeads = JSON.parse(myLeads);
-parsedLeads.push("asdfa");
-console.log(parsedLeads);
+// leads = JSON.parse(leads);
+// leads.push("asdfa");
+// console.log(leads);
 
-console.log(typeof parsedLeads);
-parsedLeads = JSON.stringify(parsedLeads);
-console.log(parsedLeads);
+// console.log(typeof leads);
+// leads = JSON.stringify(leads);
+// console.log(leads);
 
-// localStorage.setItem("myLeads example", "www.examplelead.com");
-// console.log(localStorage.getItem("myLeads example"));
+// localStorage.setItem("leads example", "www.examplelead.com");
+// console.log(localStorage.getItem("leads example"));
 // localStorage.clear();
 
 btnSave.addEventListener("click", function () {
   leads.push(inputEl.value);
   inputEl.value = "";
-
+  //leads = JSON.stringify(leads);
+  localStorage.setItem("leads", JSON.stringify(leads));
   renderLeads();
 });
 
