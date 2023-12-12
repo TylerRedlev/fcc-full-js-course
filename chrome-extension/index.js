@@ -6,6 +6,24 @@ const btnSave = document.getElementById("btn-input");
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("list-el");
 
+let myLeads = `["asdfasdfadsfa"]`;
+
+//Turn leads string into an array
+//Push a new value to the array
+//Turn the array into a string again
+//Console log the string using typeofto verify that it's a string
+let parsedLeads = JSON.parse(myLeads);
+parsedLeads.push("asdfa");
+console.log(parsedLeads);
+
+console.log(typeof parsedLeads);
+parsedLeads = JSON.stringify(parsedLeads);
+console.log(parsedLeads);
+
+// localStorage.setItem("myLeads example", "www.examplelead.com");
+// console.log(localStorage.getItem("myLeads example"));
+// localStorage.clear();
+
 btnSave.addEventListener("click", function () {
   leads.push(inputEl.value);
   inputEl.value = "";
