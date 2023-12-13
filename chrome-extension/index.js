@@ -9,6 +9,7 @@ let leads = [];
 const btnSave = document.getElementById("btn-input");
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("list-el");
+const btnDelete = document.getElementById("btn-delete");
 
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("leads"));
 // localStorage.clear();
@@ -42,6 +43,12 @@ btnSave.addEventListener("click", function () {
   inputEl.value = "";
   //leads = JSON.stringify(leads);
   localStorage.setItem("leads", JSON.stringify(leads));
+  renderLeads();
+});
+
+btnDelete.addEventListener("dblclick", function () {
+  localStorage.clear();
+  leads = [];
   renderLeads();
 });
 
