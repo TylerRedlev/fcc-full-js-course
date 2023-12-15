@@ -10,55 +10,50 @@ const btnSave = document.getElementById("btn-input");
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("list-el");
 const btnDelete = document.getElementById("btn-delete");
+const btnTab = document.getElementById("btn-save");
 
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("leads"));
-// localStorage.clear();
-// let leadsFromLocalStorage = JSON.parse(localStorage.getItem("leads"));
-// console.log(leadsFromLocalStorage);
+const tabs = [{ url: "https://www.linkedin.com/in/per-harald-borgen/" }];
 
+//Get leads from localStorage
 if (leadsFromLocalStorage) {
   leads = leadsFromLocalStorage;
-  renderLeads();
+  renderLeads(leads);
 }
-//let leads = `["asdfasdfadsfa"]`;
 
-//Turn leads string into an array
-//Push a new value to the array
-//Turn the array into a string again
-//Console log the string using typeofto verify that it's a string
-// leads = JSON.parse(leads);
-// leads.push("asdfa");
-// console.log(leads);
-
-// console.log(typeof leads);
-// leads = JSON.stringify(leads);
-// console.log(leads);
-
-// localStorage.setItem("leads example", "www.examplelead.com");
-// console.log(localStorage.getItem("leads example"));
-// localStorage.clear();
-
+//Save button menu event listener
 btnSave.addEventListener("click", function () {
   leads.push(inputEl.value);
   inputEl.value = "";
   //leads = JSON.stringify(leads);
   localStorage.setItem("leads", JSON.stringify(leads));
-  renderLeads();
+  renderLeads(leads);
 });
 
 btnDelete.addEventListener("dblclick", function () {
   localStorage.clear();
   leads = [];
-  renderLeads();
+  renderLeads(leads);
 });
 
-function renderLeads() {
+btnTab.addEventListener("click", function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    let activeTab = tabs[0];
+    let activeTabId = activeTab.id;
+    // Do something with url
+  });
+  //console.log(tabs[0].url);
+  leads.push(tabs[0].url);
+  localStorage.setItem("leads", JSON.stringify(leads));
+});
+
+function renderLeads(leadsArray) {
   ulEl.innerHTML = "";
   let listItems = "";
 
-  for (i = 0; i < leads.length; i++) {
+  for (i = 0; i < leadsArray.length; i++) {
     //listItems += "<li><a target='_blank' href='#'>" + leads[i] + "</a></li>";
-    listItems += `<li><a target='_blank' href='#'> ${leads[i]} </a></li>`;
+    listItems += `<li><a target='_blank' href='#'> ${leadsArray[i]} </a></li>`;
     //Create listItems for list items HTML
 
     //create li const
